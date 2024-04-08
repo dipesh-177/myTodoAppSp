@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
-export default function Inputs({ addTodo }) {
+export default function Inputs(props) {
   const formDivStyle = {
-    width: "500px",
+    width: "40%",
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    padding: "20px"
   };
 
   const [title, setTitle] = useState("");
@@ -18,25 +19,16 @@ export default function Inputs({ addTodo }) {
       },
       body: JSON.stringify({ title, description })
     })
-    .then(response => response.json()) // assuming server responds with the new todo
+    .then((res)=>{
+      setTitle("");
+      setDescription("");
+      props.changeAdded();
+    }) // assuming server responds with the new todo
     .catch(error => {
       console.error("Error adding todo:", error);
     });
-
-    updateTodo();
       }
 
-      function updateTodo(){
-        
-        fetch("http://localhost:3001/gettodos", { method: "GET" })
-      .then(async (res) => {
-        const data = await res.json();
-        addTodo(data);
-        console.log(data);
-        setTitle("");
-        setDescription("")
-      })
-      }
 
   return (
     <div className="formDiv" style={formDivStyle}>
