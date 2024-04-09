@@ -28,6 +28,24 @@ const [btn1, setBtn1] = useState(done ? "Undo" : "Mark as Done");
 console.log(err);
         })
     }
+
+    async function handleDelete(){
+        fetch("http://localhost:3001/deletetodo", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({id: uniqueKey})
+        })
+        .then(async (res)=>{
+            const ans = await res.json();
+            console.log(ans.msg);
+            changeAdded();
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+    }
 return(
     <div style={{
         padding: "20px",
@@ -64,9 +82,7 @@ return(
         color: "white",
         border: "2px solid red",
         borderRadius: "10px"
-    }} onClick={()=>{
-        alert("Clicked")
-    }}>Delete</button>
+    }} onClick={handleDelete}>Delete</button>
     </div>
     
     </div>

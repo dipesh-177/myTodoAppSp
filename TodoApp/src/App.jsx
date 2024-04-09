@@ -2,6 +2,9 @@ import Inputs from "./components/Inputs"
 import { useState, useEffect } from "react"
 import Todo from "./components/Todo";
 import NavBar from "./components/NavBar";
+import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
+import About from "./components/About";
+import Socials from "./components/Socials";
 function App() {
 
   const[data, setData] = useState([]);
@@ -21,10 +24,10 @@ function App() {
 const changeAdded = ()=>{
   if(added==true){
     setAdded(false);
-    console.log(added);
+    // console.log(added);
   } else{
     setAdded(true);
-    console.log(added);
+    // console.log(added);
   }
 }
 
@@ -36,8 +39,12 @@ function done(){
     padding: "0px",
     width:"100%"
     }}>
-           <NavBar/>
-      <div style={{
+       <BrowserRouter>
+       <NavBar/>
+       <Routes>
+
+       
+      <Route path="/" element={<div style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "space-evenly",
@@ -57,7 +64,12 @@ function done(){
       <Todo key={todo._id} title={todo.title} description={todo.description} done={true} uniqueKey={todo._id} changeAdded={changeAdded} />
   
   ))}
-      </div>
+      </div>} />
+
+      <Route path="/about" element={<About/>} />
+      <Route path="/socials" element={<Socials/>} />
+      </Routes>
+       </BrowserRouter>
     
     </div>
   )
