@@ -7,7 +7,7 @@ export default  function NavBar(){
             display: "flex",
             alignItems:"center",
             justifyContent: "space-between",
-            backgroundColor:"greenyellow",
+            backgroundColor:"green",
             padding: "15px",
             align:"center"
 

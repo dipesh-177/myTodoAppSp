@@ -7,7 +7,7 @@ export default function Todo({title, description, uniqueKey, done, changeAdded})
 const [btn1, setBtn1] = useState(done ? "Undo" : "Mark as Done");
    async function handleDone(){
     
-        fetch("http://localhost:3001/done", {
+        fetch("http://ec2-13-58-114-19.us-east-2.compute.amazonaws.com:3001/done", {
             method:"PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -30,7 +30,7 @@ console.log(err);
     }
 
     async function handleDelete(){
-        fetch("http://localhost:3001/deletetodo", {
+        fetch("http://ec2-13-58-114-19.us-east-2.compute.amazonaws.com:3001/deletetodo", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
