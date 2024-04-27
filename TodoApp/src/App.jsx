@@ -15,7 +15,7 @@ function App() {
   }, [added]);
 
   function fetchData(){
-    fetch("http://ec2-13-58-114-19.us-east-2.compute.amazonaws.com:3001/gettodos", { method: "GET" })
+    fetch("https://todo.santoshpant.me/gettodos", { method: "GET" })
     .then(async (res) => {
       const data = await res.json();
       setData(data);

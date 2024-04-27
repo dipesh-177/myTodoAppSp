@@ -12,7 +12,7 @@ export default function Inputs(props) {
   const [description, setDescription] = useState("");
 
   function handleSubmit() {
-    fetch("http://ec2-13-58-114-19.us-east-2.compute.amazonaws.com:3001/addtodo", {
+    fetch("https://todo.santoshpant.me/addtodo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
